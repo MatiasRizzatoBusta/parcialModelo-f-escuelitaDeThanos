@@ -24,6 +24,14 @@ data Universo = UnUniverso{
     habitantes :: [Personaje]
 }deriving (Show,Eq)
 
+thor = UnPersonaje 30 1000 ["usar Mjolir","tirar martillo"] "Thor" "Asgard"
+spiderMan = UnPersonaje 20 400 ["tirar telarania","hacer piruetas","combate cuerpo a cuerpo"] "Peter Parker" "Tierra"
+cptAmerica = UnPersonaje 90 990 ["ser fuerte","usar escudo","correr rapido","combate cuerpo a cuerpo"] "steve Rogers" "Tierra"
+
+guanteThanos = UnGuante "uru" [elTiempo,laMente 200,elEspacio]
+
+universoMarvel = UnUniverso [thor,spiderMan,cptAmerica]
+
 chasquido :: Guante->Universo->Universo
 chasquido guante universo |((== 6).length.gemas) guante = universo{habitantes= reduzcoUniverso (habitantes universo)}
                           |otherwise = universo
