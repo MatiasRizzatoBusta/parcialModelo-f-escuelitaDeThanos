@@ -81,3 +81,9 @@ laGemaLoca gema = gema.gema
 guanteDeGoma = UnGuante "goma" [elTiempo,elAlma "usar Mjolir",laGemaLoca (elAlma "programacion en haskell")]
 
 ------------------------------------- Punto 5 -------------------------------------
+utilizar :: [Gema]->Personaje->Personaje
+utilizar listaGemas enemigo = foldr ($) enemigo listaGemas
+--al enemigo se le aplica la primera gema y lo devuelve cambiado.A este resultado se le aplica la segunda gema y asi hasta que 
+--el enemigo paso por todas las gemas de la lista,devolviendo entonces al enemigo afectado por cada gema.
+
+------------------------------------- Punto 6 -------------------------------------
