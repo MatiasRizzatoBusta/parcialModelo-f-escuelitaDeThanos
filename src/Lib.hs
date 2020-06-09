@@ -87,10 +87,27 @@ utilizar listaGemas enemigo = foldr ($) enemigo listaGemas
 --el enemigo paso por todas las gemas de la lista,devolviendo entonces al enemigo afectado por cada gema.
 
 ------------------------------------- Punto 6 -------------------------------------
-gemaMasPoderosa :: Guante->Personaje->Gema
-gemaMasPoderosa guante persona = aplicoGemas (gemas guante) persona
+gemaMasPoderosa ::Personaje->Guante->Gema
+gemaMasPoderosa persona guante = aplicoGemas (gemas guante) persona
 
 aplicoGemas :: [Gema]->Personaje->Gema
 aplicoGemas [gema] _ = gema --cuando la lista quede con un solo elemento me quedo con ese.similar a cuando hacia []
 aplicoGemas (x:y:xs) persona | (energia.x) persona > (energia.y) persona = aplicoGemas (x:xs) persona
                              |otherwise = aplicoGemas (y:xs) persona
+
+------------------------------------- Punto 7 -------------------------------------
+infinitasGemas :: Gema -> [Gema]
+infinitasGemas gema = gema:(infinitasGemas gema)
+guanteleteDeLocos :: Guante
+guanteleteDeLocos = UnGuante "vesconite" (infinitasGemas elTiempo)
+usoLasTresPrimerasGemas :: Guante -> Personaje -> Personaje
+usoLasTresPrimerasGemas guantelete = (utilizar . take 3. gemas) guantelete
+
+
+{-La funcion gemaMasPoderosa punisher guanteleteDeLocos no va a funcionar ya que la funcion va a tener que analizar una lista infinita
+de la misma gema y nunca pararia de analizar porque nunca llegaria a una lista con un solo elemento.
+
+La funcion usoLasTresPrimerasGemas guanteleteDeLocos punisher si funcionaria ya que como haskell utiliza el lazy-evaluation,
+cuando llegue a la lista infinita de gemas ya sabe que solo tiene que tomar las tres primeras y aplicarselas al personaje que le 
+pase como parametro.
+-}
