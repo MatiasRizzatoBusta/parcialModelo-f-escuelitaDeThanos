@@ -87,3 +87,10 @@ utilizar listaGemas enemigo = foldr ($) enemigo listaGemas
 --el enemigo paso por todas las gemas de la lista,devolviendo entonces al enemigo afectado por cada gema.
 
 ------------------------------------- Punto 6 -------------------------------------
+gemaMasPoderosa :: Guante->Personaje->Gema
+gemaMasPoderosa guante persona = aplicoGemas (gemas guante) persona
+
+aplicoGemas :: [Gema]->Personaje->Gema
+aplicoGemas [gema] _ = gema --cuando la lista quede con un solo elemento me quedo con ese.similar a cuando hacia []
+aplicoGemas (x:y:xs) persona | (energia.x) persona > (energia.y) persona = aplicoGemas (x:xs) persona
+                             |otherwise = aplicoGemas (y:xs) persona
