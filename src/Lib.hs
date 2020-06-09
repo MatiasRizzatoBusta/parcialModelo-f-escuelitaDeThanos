@@ -47,4 +47,4 @@ energiaUniverso :: Universo->Int
 energiaUniverso  = sum.map energia.losQueTienenMasDeUnaHabilidad.habitantes
 
 losQueTienenMasDeUnaHabilidad :: [Personaje]->[Personaje]
-losQueTienenMasDeUnaHabilidad  =  filter ((>1).length.habilidades)
+losQueTienenMasDeUnaHabilidad  =  filter ((>1).length.habilidades) --agarro un pj,voy a sus habilidades les hago length y
