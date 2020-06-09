@@ -41,7 +41,7 @@ aptoParaPendex universo = (cumpleCondicion (<45).map edad) (habitantes universo)
 cumpleCondicion :: Eq a=>(a->Bool)->[a]->Bool
 cumpleCondicion condicion parametro = all condicion parametro --a la lista de personajes solo la dejo con las edades y me fijo que todos 
  --cumplan la condicion que le paso.
- --podria haber hecho all (<45).edad
+ --podria haber hecho all ((<45).edad)
 
 energiaUniverso :: Universo->Int
 energiaUniverso  = sum.map energia.losQueTienenMasDeUnaHabilidad.habitantes
